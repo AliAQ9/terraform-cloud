@@ -9,6 +9,16 @@ data "terraform_remote_state" "vpc" {
   }
 }
 
+data "terraform_remote_state" "rds" {
+  backend = "remote"
+
+  config = {
+    organization = "AliAQ9"
+    workspaces = {
+      name = "rds"
+    }
+  }
+}
 
 data "aws_ami" "ubuntu" {
   most_recent = true
